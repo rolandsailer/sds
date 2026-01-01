@@ -72,6 +72,10 @@ h6 {
   font: var(--sds-font-heading);
 }
 
+h1 {
+  font-weight: 900;
+}
+
 h1,
 h2,
 h3,
