@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   left: 0;
+  overflow: visible;
   position: fixed;
   right: 0;
   top: 0;
@@ -28,6 +29,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow: visible;
   padding-bottom: var(--dialog-padding-y);
   padding-top: var(--dialog-padding-y);
   position: relative;
@@ -82,8 +84,33 @@
 
 .dialog-body {
   margin-top: var(--sds-size-space-600);
+  overflow: visible;
 }
 
 .dialog-description {
   margin-top: var(--sds-size-space-200);
+}
+
+/* Ensure date/time pickers display correctly in dialogs */
+.dialog input[type="date"],
+.dialog input[type="datetime-local"],
+.dialog input[type="time"],
+.dialog input[type="month"],
+.dialog input[type="week"] {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure forms and fieldsets in dialogs don't clip date pickers */
+.dialog .form,
+.dialog .fieldset {
+  overflow: visible;
+}
+
+/* Ensure the native date picker popup appears above dialog backdrop */
+.dialog-container input[type="date"]::-webkit-calendar-picker-indicator,
+.dialog-container input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+.dialog-container input[type="time"]::-webkit-calendar-picker-indicator {
+  z-index: calc(var(--global-stack-dialog-container) + 1);
+  position: relative;
 }

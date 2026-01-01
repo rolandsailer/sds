@@ -66,6 +66,11 @@
 .text-title-hero {
   font: var(--sds-font-title-hero);
 }
+
+h1.text-title-hero {
+  font-size: 36px;
+  font-weight: 900;
+}
 .text-title-page {
   font: var(--sds-font-title-page);
 }
