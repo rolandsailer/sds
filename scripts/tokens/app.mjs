@@ -84,10 +84,20 @@ async function initialize() {
   // This allows us to process independent of REST API.
   // You can use Plugins to author these files manually without Variables REST API access.
   if (!SKIP_REST_API) {
-    const stylesJSON = await getFileStyles(FILE_KEY);
-    fs.writeFileSync("./styles.json", JSON.stringify(stylesJSON, null, 2));
-    const tokensJSON = await getFileVariables(FILE_KEY, NAMESPACE);
-    fs.writeFileSync("./tokens.json", JSON.stringify(tokensJSON, null, 2));
+    try {
+      const stylesJSON = await getFileStyles(FILE_KEY);
+      fs.writeFileSync("./styles.json", JSON.stringify(stylesJSON, null, 2));
+    } catch (e) {
+      console.warn("Warning: Could not fetch styles from Figma API:", e.message);
+      console.warn("Continuing with existing styles.json if available...");
+    }
+    try {
+      const tokensJSON = await getFileVariables(FILE_KEY, NAMESPACE);
+      fs.writeFileSync("./tokens.json", JSON.stringify(tokensJSON, null, 2));
+    } catch (e) {
+      console.error("Error: Could not fetch variables from Figma API:", e.message);
+      throw e;
+    }
   }
   // Process token JSON into CSS
   const { processed, themeCSS } = processTokenJSON(

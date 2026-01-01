@@ -421,7 +421,7 @@
 /* typography_primitives: default (default) */
 :root {
   --sds-typography-family-mono: "roboto mono", monospace;
-  --sds-typography-family-sans: "inter", sans-serif;
+  --sds-typography-family-sans: "space grotesk", sans-serif;
   --sds-typography-family-serif: "noto serif", serif;
   --sds-typography-scale-01: 0.75rem;
   --sds-typography-scale-02: 0.875rem;

@@ -34,6 +34,10 @@ export async function getFileVariables(fileKey, nameSpace) {
       headers: { "X-FIGMA-TOKEN": TOKEN },
     });
     const data = await fileResponse.json();
+    if (!data.meta || !data.meta.variableCollections) {
+      console.error("API Response:", JSON.stringify(data, null, 2));
+      throw new Error(`Invalid API response: ${data.error || 'Missing variableCollections in response'}`);
+    }
     return variablesRESTResponseToVariablesJSON(data, nameSpace);
   } catch (e) {
     throw e;
