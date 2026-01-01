@@ -1,24 +1,18 @@
 import { Footer, Header } from "compositions";
 import { AllProviders } from "data";
-import { Demo } from "./examples/Demo";
-import { FAQs } from "./examples/FAQs";
-import { PanelSections } from "./examples/PanelSections";
-import { PricingGrid } from "./examples/PricingGrid";
-import { ProductDetails } from "./examples/ProductDetails";
-import { ProductGrid } from "./examples/ProductGrid";
-import { WelcomeHero } from "./examples/WelcomeHero";
+import { BookingForm } from "./examples/BookingForm";
+import { LocationSelector } from "./examples/LocationSelector";
+import { SUPBoardGrid } from "./examples/SUPBoardGrid";
+import { SUPHero } from "./examples/SUPHero";
 
 function App() {
   return (
     <AllProviders>
       <Header />
-      <Demo />
-      <WelcomeHero />
-      <PanelSections />
-      <PricingGrid />
-      <FAQs />
-      <ProductDetails />
-      <ProductGrid />
+      <SUPHero />
+      <LocationSelector />
+      <SUPBoardGrid />
+      <BookingForm />
       <Footer />
     </AllProviders>
   );

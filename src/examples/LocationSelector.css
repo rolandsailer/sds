@@ -1,0 +1,16 @@
+.location-card {
+  border: 1px solid var(--color-stroke-default);
+  border-radius: var(--radius-400);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.location-card:hover {
+  box-shadow: var(--shadow-200);
+}
+
+.location-card.selected {
+  border-color: var(--color-brand-default);
+  box-shadow: 0 0 0 2px var(--color-brand-default);
+}
+

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { AuthProvider } from "./AuthProvider";
 import { PricingProvider } from "./PricingProvider";
 import { ProductsProvider } from "./ProductsProvider";
+import { SUPProvider } from "./SUPProvider";
 
 /**
  * Combined provider that wraps all SDS providers in the correct order
@@ -22,7 +23,9 @@ export function AllProviders({ children }: { children?: ReactNode }) {
   return (
     <AuthProvider>
       <PricingProvider>
-        <ProductsProvider>{children}</ProductsProvider>
+        <ProductsProvider>
+          <SUPProvider>{children}</SUPProvider>
+        </ProductsProvider>
       </PricingProvider>
     </AuthProvider>
   );
